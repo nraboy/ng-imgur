@@ -1,0 +1,27 @@
+{
+  "name": "ng-imgur",
+  "main": "ng-imgur.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/nraboy/ng-imgur",
+  "authors": [
+    "Nic Raboy <http://www.nraboy.com>"
+  ],
+  "description": "AngularJS library for making RESTful requests to Imgur",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "ng-imgur",
+    "imgur",
+    "angularjs",
+    "restful"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
