@@ -134,6 +134,28 @@
                     deferred.reject(error);
                 });
                 return deferred.promise;
+            },
+
+            /*
+             * Upload a new image.
+             */
+            imageUpload: function(params) {
+                var deferred = $q.defer();
+                $http({
+                    method: "POST",
+                    url: this.apiBase + "/image",
+                    headers: {
+                        "Authorization": "Bearer " + this.accessToken
+                    },
+                    params: params
+                })
+                .success(function(result) {
+                    deferred.resolve(result);
+                })
+                .error(function(error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
             }
 
         };
