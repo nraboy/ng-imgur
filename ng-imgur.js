@@ -2,8 +2,6 @@
 
     angular.module("ngImgur", []).factory("$imgur", ["$q", "$http", function ($q, $http) {
 
-        // Authorization: Bearer ACCESS_TOKEN
-
         var imgur = function(accessToken) {
             this.accessToken = accessToken;
             this.apiBase = "https://api.imgur.com/3";
@@ -85,6 +83,49 @@
                     headers: {
                         "Authorization": "Bearer " + this.accessToken
                     }
+                })
+                .success(function(result) {
+                    deferred.resolve(result);
+                })
+                .error(function(error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
+            /*
+             * Returns the account settings, only accessible if you're logged in as the user.
+             */
+            getAccountSettings: function(username) {
+                var deferred = $q.defer();
+                $http({
+                    method: "GET",
+                    url: this.apiBase + "/account/" + username + "/settings",
+                    headers: {
+                        "Authorization": "Bearer " + this.accessToken
+                    }
+                })
+                .success(function(result) {
+                    deferred.resolve(result);
+                })
+                .error(function(error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
+            /*
+             * Updates the account settings for a given user, the user must be logged in.
+             */
+            setAccountSettings: function(username, params) {
+                var deferred = $q.defer();
+                $http({
+                    method: "POST",
+                    url: this.apiBase + "/account/" + username + "/settings",
+                    headers: {
+                        "Authorization": "Bearer " + this.accessToken
+                    },
+                    params: params
                 })
                 .success(function(result) {
                     deferred.resolve(result);
