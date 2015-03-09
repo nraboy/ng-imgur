@@ -9,6 +9,10 @@
 
         imgur.prototype = {
 
+            getAccessToken: function() {
+                return this.accessToken;
+            },
+
             /*
              * Request standard user information. If you need the username for the account that is logged in, it is returned in the request for an access token.
              */
@@ -156,7 +160,33 @@
                     deferred.reject(error);
                 });
                 return deferred.promise;
-            }
+            },
+
+            /*
+             * Returns the images in the gallery.
+             */
+            getGallery: function(section, sort, page, dateRange, showViral) {
+                var deferred = $q.defer();
+                var galleryEndpoint = this.apiBase + "/gallery";
+                if(section !== undefined) { galleryEndpoint += "/" + section; }
+                if(sort !== undefined) { galleryEndpoint += "/" + sort; }
+                if(dateRange !== undefined) { galleryEndpoint += "/" + dateRange; }
+                if(showViral !== undefined) { galleryEndpoint += "?showViral=" + showViral; }
+                $http({
+                    method: "GET",
+                    url: galleryEndpoint,
+                    headers: {
+                        "Authorization": "Bearer " + this.accessToken
+                    }
+                })
+                .success(function(result) {
+                    deferred.resolve(result);
+                })
+                .error(function(error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
 
         };
 
