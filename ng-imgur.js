@@ -141,6 +141,28 @@
             },
 
             /*
+             * Return all of the images associated with the account. You can page through the images by setting the page, this defaults to 0.
+             */
+            getAccountImages: function(username, page) {
+                var deferred = $q.defer();
+                if(page === undefined) { page = 0; }
+                $http({
+                    method: "GET",
+                    url: this.apiBase + "/account/" + username + "/images/" + page,
+                    headers: {
+                        "Authorization": "Bearer " + this.accessToken
+                    }
+                })
+                .success(function(result) {
+                    deferred.resolve(result);
+                })
+                .error(function(error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            },
+
+            /*
              * Upload a new image.
              */
             imageUpload: function(params) {
@@ -187,6 +209,27 @@
                 });
                 return deferred.promise;
             },
+
+            /*
+             * Get list of all conversations for the logged in user.
+             */
+            getConversationList: function() {
+                var deferred = $q.defer();
+                $http({
+                    method: "GET",
+                    url: this.apiBase + "/conversations",
+                    headers: {
+                        "Authorization": "Bearer " + this.accessToken
+                    }
+                })
+                .success(function(result) {
+                    deferred.resolve(result);
+                })
+                .error(function(error) {
+                    deferred.reject(error);
+                });
+                return deferred.promise;
+            }
 
         };
 

@@ -5,7 +5,7 @@
 ngImgur
 ==============================
 
-ngImgure is an AngularJS library for making RESTful requests to Imgur.
+ngImgur is an AngularJS library for making RESTful requests to Imgur.
 
 
 Requirements
