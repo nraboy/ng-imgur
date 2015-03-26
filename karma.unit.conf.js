@@ -6,7 +6,7 @@ module.exports = function(config) {
         frameworks: ['mocha', 'chai'],
 
         files: [
-            'node_modules/chai-as-promised/lib/chai-as-promised',
+            'node_modules/chai-as-promised/lib/chai-as-promised.js',
             'node_modules/angular/angular.js',
             'node_modules/angular-mocks/angular-mocks.js',
             'ng-imgur.js',
@@ -21,9 +21,9 @@ module.exports = function(config) {
 
         logLevel: config.LOG_INFO,
 
-        autoWatch: true,
+        autoWatch: false,
 
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
 
         captureTimeout: 20000,
 
@@ -32,7 +32,7 @@ module.exports = function(config) {
         reportSlowerThan: 500,
 
         plugins: [
-            'karma-chrome-launcher',
+            'karma-phantomjs-launcher',
             'karma-mocha',
             'karma-chai'
         ]
