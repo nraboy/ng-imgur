@@ -21,8 +21,12 @@ module.exports = function(grunt) {
             js: ['*.min.js']
         },
         karma: {
-            unit: {
+            dev: {
                 configFile: 'karma.unit.conf.js'
+            },
+            ci: {
+                configFile: 'karma.unit.conf.js',
+                singleRun: true
             }
         }
     });
@@ -32,7 +36,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('test', ['clean', 'jshint', 'karma']);
+    grunt.registerTask('test', ['clean', 'jshint', 'uglify', 'karma:ci']);
     grunt.registerTask('default', ['clean', 'jshint', 'uglify']);
 
 };
