@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('test', ['clean', 'jshint', 'karma']);
+    grunt.registerTask('test', ['clean', 'jshint', 'uglify', 'karma']);
     grunt.registerTask('default', ['clean', 'jshint', 'uglify']);
 
 };
