@@ -17,6 +17,15 @@ Requirements
 Using ngImgur In Your Project
 -------------
 
+Unit Testing
+-------------
+
+Unit tests are run using [Karma](http://karma-runner.github.io) with the PhantomJS launcher. To launch a single test run, execute  `grunt test`. To run tests iteratively during development, execute `grunt karma:dev`. Karma will re-run tests on every file save in either `ng-imgur.js` or `ng-imgur.test.js`.
+
+Testing libraries used:
+* [mocha](http://mochajs.org)
+* [chai](http://chaijs.com)
+* [chai-as-promised](https://github.com/domenic/chai-as-promised/)
 
 Version History
 -------------

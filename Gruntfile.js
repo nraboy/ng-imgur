@@ -12,18 +12,31 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            all: ['*.js']
+            options: {
+                expr: true
+            },
+            all: ['ng-imgur.js']
         },
         clean: {
             js: ['*.min.js']
+        },
+        karma: {
+            dev: {
+                configFile: 'karma.unit.conf.js'
+            },
+            ci: {
+                configFile: 'karma.unit.conf.js',
+                singleRun: true
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('test', ['clean', 'jshint']);
+    grunt.registerTask('test', ['clean', 'jshint', 'uglify', 'karma:ci']);
     grunt.registerTask('default', ['clean', 'jshint', 'uglify']);
 
 };
