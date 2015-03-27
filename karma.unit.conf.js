@@ -21,13 +21,13 @@ module.exports = function(config) {
 
         logLevel: config.LOG_INFO,
 
-        autoWatch: false,
+        autoWatch: true,
 
         browsers: ['PhantomJS'],
 
         captureTimeout: 20000,
 
-        singleRun: true,
+        singleRun: false,
 
         reportSlowerThan: 500,
 
