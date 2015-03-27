@@ -5,7 +5,7 @@
         this.accessToken = null;
         this.apiBase = "https://api.imgur.com/3";
 
-        this.$get = ['$q', '$http', function () {
+        this.$get = ['$q', '$http', function ($q, $http) {
 
             if(this.accessToken === null)
                 throw new Error('An access token is required to create $imgur');
