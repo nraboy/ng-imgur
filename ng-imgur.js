@@ -148,7 +148,7 @@
                     };
 
                     if(params) {
-                        settings.params = params
+                        settings.params = params;
                     }
 
                     var deferred = $q.defer();
