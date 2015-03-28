@@ -76,7 +76,7 @@
                  */
                 setAccountSettings: function(username, params) {
 
-                    var url = this.apiBase + "/account/" + username + "/settings"
+                    var url = this.apiBase + "/account/" + username + "/settings";
 
                     return this._makeRequest(url, "POST", params);
                 },
