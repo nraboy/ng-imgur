@@ -6,6 +6,7 @@ module.exports = function(config) {
         frameworks: ['mocha', 'chai'],
 
         files: [
+            'node_modules/pbind/index.js',
             'node_modules/chai-as-promised/lib/chai-as-promised.js',
             'node_modules/angular/angular.js',
             'node_modules/angular-mocks/angular-mocks.js',
